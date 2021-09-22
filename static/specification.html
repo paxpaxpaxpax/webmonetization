@@ -144,10 +144,11 @@
     </section>
     <section>
       <h2>
-        Extensions to the `Document` interface
+        Extensions to the `Navigator` interface
       </h2>
       <pre class="idl">
-        partial interface Document {
+        partial interface Navigator {
+          [SecureContext]
           readonly attribute Monetization monetization;
         };
       </pre>
@@ -230,7 +231,7 @@
             with a non-zero amount, the provider notifies the browser:
               <ul>
                 <li>The <a>user agent</a> sets
-                <code>document.monetization.state</code> to
+                <code>navigator.monetization.state</code> to
                 <code>started</code>.
                 </li>
                 <li>This MUST occur before the `start` event is fired.
@@ -239,7 +240,7 @@
                 Payment Setup Endpoint and the Monetization ID as properties.
                 </li>
                 <li>The <a>user agent</a> also emits a {{ progress }} event
-                from <code>document.monetization</code>, corresponding to this
+                from <code>navigator.monetization</code>, corresponding to this
                 first packet.
                 </li>
               </ul>
@@ -262,7 +263,7 @@
                 event has details of the packet.
                 </li>
                 <li>When a stream is closed the
-                <code>document.monetization.state</code> MUST be set back to
+                <code>navigator.monetization.state</code> MUST be set back to
                 'pending'
                 </li>
               </ul>
